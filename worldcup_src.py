@@ -278,36 +278,6 @@ plt.ylabel('Coefficient Value')
 plt.tight_layout()
 plt.show()
 
-# Data
-models = ['Linear', 'Elastic Net', 'Ridge', 'Lasso', 'Polynomial']
-mean_scores = [mean_score, mean_score_elastic, mean_score_ridge, mean_score_lasso, mean_score_poly]
-mses = [lr_mse, en_mse, ridge_mse, lasso_mse, polyR_mse]
-
-# Plotting
-fig, ax = plt.subplots(figsize=(10, 8))
-
-# Bar width
-bar_width = 0.35
-index = np.arange(len(models))
-
-# Plot mean scores
-ax.bar(index - bar_width/2, mean_scores, bar_width, label='Mean Score', color='skyblue')
-
-# Plot MSEs
-ax.bar(index + bar_width/2, mses, bar_width, label='Mean Square Error', color='salmon')
-
-# Add labels, title, legend, and grid
-ax.set_xlabel('Models')
-ax.set_ylabel('Scores / MSE')
-ax.set_title('Comparison of Cross-Validation Mean Scores and Mean Square Error for Different Regression Models')
-ax.set_xticks(index)
-ax.set_xticklabels(models)
-ax.legend()
-ax.grid(axis='y')
-
-plt.tight_layout()
-plt.show()
-
 import matplotlib.pyplot as plt
 
 # Plotting the predicted values versus the actual values for training data
@@ -346,12 +316,4 @@ plt.bar(['Training Data', 'Testing Data'], [train_accuracy, test_accuracy], colo
 plt.title('Accuracy Comparison between Training and Testing Data')
 plt.ylabel('Accuracy (%)')
 plt.ylim(0, 100)  # Set the y-axis limit from 0 to 100
-plt.show()
-
-plt.figure(figsize=(10, 6))
-plt.hist(residuals, bins=20, color='blue', alpha=0.7)
-plt.title('Distribution of Residuals')
-plt.xlabel('Residuals')
-plt.ylabel('Frequency')
-plt.grid(True)
 plt.show()
