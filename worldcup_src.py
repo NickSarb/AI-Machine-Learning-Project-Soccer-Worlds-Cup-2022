@@ -330,6 +330,64 @@ plt.show()
 #5. Graphs for best AI Algorithm
 
 #5.1 Plot Actual data vs Predicted data
+# Plotting the predicted values versus the actual values for training data
+plt.figure(figsize=(10, 5))
+plt.subplot(1, 2, 1)
+plt.scatter(y_train, lr_model.predict(X_train), color='blue')
+plt.plot([0, max(y_train)], [0, max(y_train)], color='red', linestyle='--')
+plt.title('Training Data: Actual vs Predicted')
+plt.xlabel('Actual')
+plt.ylabel('Predicted')
+
+# Plotting the predicted values versus the actual values for testing data
+plt.subplot(1, 2, 2)
+plt.scatter(y_test, lr_y_predict, color='green')
+plt.plot([0, max(y_test)], [0, max(y_test)], color='red', linestyle='--')
+plt.title('Testing Data: Actual vs Predicted')
+plt.xlabel('Actual')
+plt.ylabel('Predicted')
+
+plt.tight_layout()
+plt.show()
+
+#5.2 Plot accuracy comparison between training and testing data
+# Calculate the mean squared error for training and testing data
+train_mse = mse(y_train, lr_model.predict(X_train))
+test_mse = mse(y_test, lr_y_predict)
+
+# Calculate the accuracy in percentage
+train_accuracy = 100 * (1 - (train_mse / np.var(y_train)))
+test_accuracy = 100 * (1 - (test_mse / np.var(y_test)))
+
+# Plotting the accuracy comparison
+plt.figure(figsize=(8, 5))
+plt.bar(['Training Data', 'Testing Data'], [train_accuracy, test_accuracy], color=['blue', 'green'])
+plt.title('Accuracy Comparison between Training and Testing Data')
+plt.ylabel('Accuracy (%)')
+plt.ylim(0, 100)  # Set the y-axis limit from 0 to 100
+plt.show()
+
+#5.3 Plot residuals against predicted values
+# Calculating residuals
+residuals = y_test - lr_y_predict
+
+plt.figure(figsize=(10, 6))
+
+# Plotting residuals against predicted values
+plt.scatter(lr_y_predict, residuals, color='blue')
+plt.axhline(y=0, color='red', linestyle='--')
+plt.title('Residual Plot')
+plt.xlabel('Predicted Values')
+plt.ylabel('Residuals')
+plt.grid(True)
+
+# Calculate mean absolute error
+mae = np.mean(np.abs(residuals))
+
+# Add MAE to the plot
+plt.text(0.1, 0.9, f'Mean Average Error: {mae:.2f}', transform=plt.gca().transAxes, fontsize=12, verticalalignment='top')
+
+plt.show()
 
 
 
