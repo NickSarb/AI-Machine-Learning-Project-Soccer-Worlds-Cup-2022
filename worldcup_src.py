@@ -389,7 +389,10 @@ plt.text(0.1, 0.9, f'Mean Average Error: {mae:.2f}', transform=plt.gca().transAx
 
 plt.show()
 
-
+# References:
+# end-to-end-studentsPerformance-RA-eclass-W24
+# svm-Classification-Iris-Moons-Wine-RA-eclass-W24
+# EECS3401 Lecture Material
 
 
 
